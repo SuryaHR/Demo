@@ -1,11 +1,22 @@
 pipeline {
-    agent {
-        any { image 'node:16.13.1-alpine' }
+    agent any
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'node --version'
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
             }
         }
     }
